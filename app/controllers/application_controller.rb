@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
       Current.user = User.find_by(id: session[:user_id])
     end
   end
+
+  def require_user_logged_in
+    redirect_to sign_in_path, alert: "You must be logged in to access this page." unless Current.user
+  end
 end
