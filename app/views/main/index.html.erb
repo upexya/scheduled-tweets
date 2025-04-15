@@ -1,9 +1,6 @@
 <% if @user %>
   <%= @user.email %>
 <% end %>
-<h1> this is main page </h1>
-<h2> hello </h2>
-<ul>
-  <li> 1 </li>
-  <li> 2 </li>
-</ul>
+<%= form_tag("/auth/twitter", method: "post", data: {turbo: false}) do %>
+  <button type="submit" class= "btn btn-primary">Login with Developer</button>
+<% end %>

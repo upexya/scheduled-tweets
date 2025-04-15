@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get "sign-in", to: "sessions#new"
   post "sign-in", to: "sessions#create"
 
+  get "auth/twitter/callback", to: "omniauth_callback#twitter"
+
   get "password", to: "passwords#edit", as: :edit_password
   patch "password", to: "passwords#update", as: :update_password
 
