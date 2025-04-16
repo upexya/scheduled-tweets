@@ -1,6 +1,9 @@
-<% if @user %>
-  <%= @user.email %>
-<% end %>
-<%= form_tag("/auth/twitter", method: "post", data: {turbo: false}) do %>
-  <button type="submit" class= "btn btn-primary">Login with Developer</button>
+<% if Current.user %>
+  <% if Current.user.twitter_accounts.count.eql?(0) %>
+    <%= form_tag("/auth/twitter", method: "post", data: {turbo: false}) do %>
+      <button type="submit" class= "btn btn-primary">Login with Developer</button>
+    <% end %>
+  <% else %>
+    Connected to twitter sucessfully
+  <% end %>
 <% end %>
