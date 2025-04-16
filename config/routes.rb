@@ -21,4 +21,8 @@ Rails.application.routes.draw do
   post "password/reset", to: "password_reset#create"
   get "password/reset/edit", to: "password_reset#edit", as: :edit_password_reset
   patch "password/reset/edit", to: "password_reset#update", as: :update_password_reset
+
+  # resources will automatically generate the index, shell, RESTful routes for the controller.
+  # eg: get "twitter_accounts/:id" to: "twitter_accounts#index"
+  resources :twitter_accounts
 end
