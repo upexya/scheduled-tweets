@@ -10,6 +10,12 @@ class Tweet < ApplicationRecord
   end
 
   def published?
-    publish_at <= Time.current
+    tweet_id?
+  end
+
+  def publish_to_twitter!
+    payload = { text: body }.to_json
+    tweet = twitter_account.client.post("tweets", payload)
+    update(tweet_id: tweet["data"]["id"])
   end
 end
