@@ -1,0 +1,7 @@
+<div class="mt-4">
+  <div class="d-flex justify-content-between align-items-center">
+    <h1> Edit your Tweet</h1>
+    <%= link_to "Back", tweets_path, class: "btn btn-secondary" %>
+  </div>
+  <%= render partial: "form", locals: {tweet: @tweet, method: :patch} %>
+</div>

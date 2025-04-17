@@ -1,0 +1,16 @@
+<%= form_with model: tweet, method: method, data: { turbo: false } do |form| %>
+  <%= render partial: "shared/form_errors", locals: { form:form } %>
+  <div class="mb-3">
+    <%= form.label :body, class: "form-label" %>
+    <%= form.text_area :body, class: "form-control", rows: 5 %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :publish_at, class: "form-label" %>
+    <%= form.datetime_select :publish_at, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :twitter_account_id, class: "form-label" %>
+    <%= form.collection_select :twitter_account_id, Current.user.twitter_accounts, :id, :username, { prompt: "Select a Twitter Account" }, { class: "form-select" } %>
+  </div>
+  <%= form.button "Edit Tweet", class: "btn btn-primary" %>
+<% end %>
