@@ -1,0 +1,27 @@
+<div class="mt-4">
+  <h1> Schedule a Tweet</h1>
+  <%= form_with model: @tweet, data: { turbo: false } do |form| %>
+    <div class="mb-3">
+      <%= form.label :content, class: "form-label" %>
+      <%= form.text_area :content, class: "form-control", rows: 5 %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :publish_at, class: "form-label" %>
+      <%= form.datetime_select :publish_at, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :twitter_account_id, class: "form-label" %>
+      <%= form.collection_select :twitter_account_id, Current.user.twitter_accounts, :id, :username, { prompt: "Select a Twitter Account" }, { class: "form-select" } %>
+    </div>
+    <%= form.button "Schedule Tweet", class: "btn btn-primary" %>
+    <% if @tweet.errors.any? %>
+      <div class="alert alert-danger mt-3">
+        <ul>
+          <% @tweet.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <% end %>
+</div>

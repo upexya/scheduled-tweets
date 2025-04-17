@@ -1,0 +1,9 @@
+<div class="mt-4 d-flex justify-content-between align-items-center">
+  <h1 class="h3">Scheduled Tweets</h1>
+  <% if Current.user.twitter_accounts.any? %>
+    <%= link_to "Schedule a Tweet", new_tweet_path, class: "btn btn-primary" %>
+  <% end %>
+</div>
+<% if Current.user.twitter_accounts.none? %>
+  <%= link_to "Connect your Twitter Account", twitter_accounts_path, class: "btn btn-primary" %>
+<% end %>
