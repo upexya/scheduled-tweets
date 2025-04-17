@@ -1,0 +1,30 @@
+<div class="list-group mt-4">
+  <div class="list-group-item list-group-item-action" style="max-width: 500px;">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="d-flex flex-column">
+        <div class="d-flex align-items-center mb-2">
+          <%= image_tag tweet.twitter_account.image, class: "rounded-circle me-2" %>
+          <h5 class="mb-1">
+            <%= link_to "@#{tweet.twitter_account.username}", "https://twitter.com/#{tweet.twitter_account.username}", target: :_blank%>
+          </h5>
+        </div>
+        <% if tweet.published? %>
+          <small>
+            <%= link_to "View Tweet", "https://twitter.com/#{tweet.twitter_account.username}/status/#{tweet.tweet_id}", target: :_blank%>
+          </small>
+        <% else %>
+          <small>
+            <b>Publish on: </b>
+            <%= l tweet.publish_at, format: :short %>
+          </small>
+        <% end %>
+      </div>
+      <div>
+        <%= button_to "Delete", tweet, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+      </div>
+    </div>
+    <p class="my-3">
+      <%= tweet.body %>
+    </p>
+  </div>
+</div>

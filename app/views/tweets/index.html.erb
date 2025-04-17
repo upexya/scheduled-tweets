@@ -7,3 +7,5 @@
 <% if Current.user.twitter_accounts.none? %>
   <%= link_to "Connect your Twitter Account", twitter_accounts_path, class: "btn btn-primary" %>
 <% end %>
+<%# renders views/tweets/_tweet.html.erb %>
+<%= render @tweets %>

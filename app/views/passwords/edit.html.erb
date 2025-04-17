@@ -3,15 +3,7 @@
     Change Password
   </h1>
   <%= form_with model: Current.user, url: update_password_path, method: :patch, data: { turbo: false } do |form| %>
-    <% if form.object.errors.any? %>
-      <div class="alert alert-danger" role="alert">
-        <% form.object.errors.full_messages.each do |message| %>
-          <p>
-            <%= message %>
-          </p>
-        <% end %>
-      </div>
-    <% end %>
+    <%= render partial: "shared/form_errors", locals: { form:form } %>
     <div class="mb-3">
       <%= form.label :password, class: "form-label" %>
       <%= form.password_field :password, class: "form-control" %>
@@ -20,6 +12,6 @@
       <%= form.label :password_confirmation, class: "form-label"%>
       <%= form.password_field :password_confirmation, class: "form-control" %>
     </div>
-    <%= form.submit "Sign Up", class: "btn btn-primary" %>
+    <%= form.submit "Update", class: "btn btn-primary" %>
   <% end %>
 </div>
