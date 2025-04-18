@@ -70,3 +70,5 @@ gem "omniauth-rails_csrf_protection", "~> 1.0"
 gem "omniauth-twitter", "~> 1.4"
 
 gem "x", "~> 0.15.2"
+
+gem "sidekiq", "~> 8.0"
